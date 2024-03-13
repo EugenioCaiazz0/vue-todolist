@@ -29,31 +29,21 @@
     </div>
 
     <div class="new-task">
-
-      <input  placeholder="Nuovo task"type="text">
-      <button >Aggiungi</button>
-      <p class="error"></p>
+      <input 
+      v-model.trim="newTask"
+      @keyup.enter="addTask"
+      placeholder="Nuovo task" type="text">
+      <button @click="addTask" >Aggiungi</button>
     </div>
 
     <div class="task-container">
-      <ul>
-        <li>
-          <span>task....</span>
-          <i class="fa-solid fa-trash-can"></i>
+      
+      <ul v-if="toDoList.length > 0">
+        <li v-for="(task,index) in toDoList">
+          <span>{{ task }}</span>
+          <i @click="deleteTask(index)" 
+          class="fa-solid fa-trash-can"></i>
         </li>
-        <li>
-          <span>task....</span>
-          <i class="fa-solid fa-trash-can"></i>
-        </li>
-        <li>
-          <span>task....</span>
-          <i class="fa-solid fa-trash-can"></i>
-        </li>
-        <li>
-          <span>task....</span>
-          <i class="fa-solid fa-trash-can"></i>
-        </li>
-
       </ul>
 
     </div>
